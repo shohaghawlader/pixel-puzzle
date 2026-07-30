@@ -148,6 +148,15 @@
         "assets/images/photo_0076_1448x2048.jpg"
     ],
     "outdoor": [
+        "assets/images/1.jpeg",
+        "assets/images/2.jpeg",
+        "assets/images/3.jpeg",
+        "assets/images/5.jpeg",
+        "assets/images/6.jpeg",
+        "assets/images/7.jpeg",
+        "assets/images/8.jpeg",
+        "assets/images/9.jpeg",
+        "assets/images/10.jpeg",
         "assets/images/photo_0003_1365x2048.jpg",
         "assets/images/photo_0004_1365x2048.jpg",
         "assets/images/photo_0005_2048x1365.jpg",
@@ -286,6 +295,9 @@
   const galleryState = new Map();
 
   const getImageShape = (src, index) => {
+    const featuredOutdoorImage = /\/(?:1|2|3|5|6|7|8|9|10)\.jpeg$/i.test(src);
+    if (featuredOutdoorImage) return index % 3 === 0 ? 'service-gallery-wide' : '';
+
     const match = src.match(/_(\d+)x(\d+)\.(?:jpg|jpeg|webp)$/i);
     if (!match) return index % 7 === 0 ? 'service-gallery-wide' : '';
     const width = Number(match[1]);
