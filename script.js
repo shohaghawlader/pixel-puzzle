@@ -414,6 +414,7 @@
 
   const bookingForm = document.getElementById('bookingForm');
   const eventDate = document.getElementById('eventDate');
+  const eventTime = document.getElementById('eventTime');
 
   if (eventDate) {
     const today = new Date();
@@ -422,6 +423,15 @@
       .split('T')[0];
     eventDate.min = localDate;
   }
+
+
+  eventDate?.addEventListener('change', () => {
+    if (eventTime) setFieldError(eventTime, '');
+  });
+
+  eventTime?.addEventListener('input', () => {
+    setFieldError(eventTime, '');
+  });
 
   const setFieldError = (field, message) => {
     const error = document.querySelector(`[data-error-for="${field.id}"]`);
@@ -432,6 +442,35 @@
 
   const validatePhone = (value) => /^01\d{9}$/.test(value.replace(/[\s-]/g, ''));
 
+  const formatProgramDate = (value) => {
+    if (!value) return '';
+    const [year, month, day] = value.split('-').map(Number);
+    const date = new Date(year, month - 1, day);
+    return new Intl.DateTimeFormat('en-GB', {
+      day: '2-digit',
+      month: 'short',
+      year: 'numeric'
+    }).format(date);
+  };
+
+  const formatProgramTime = (value) => {
+    if (!value) return '';
+    const [hour, minute] = value.split(':').map(Number);
+    const date = new Date();
+    date.setHours(hour, minute, 0, 0);
+    return new Intl.DateTimeFormat('en-US', {
+      hour: 'numeric',
+      minute: '2-digit',
+      hour12: true
+    }).format(date);
+  };
+
+  const isPastProgramTime = (dateValue, timeValue) => {
+    if (!dateValue || !timeValue) return false;
+    const selected = new Date(`${dateValue}T${timeValue}:00`);
+    return Number.isNaN(selected.getTime()) || selected.getTime() <= Date.now();
+  };
+
   bookingForm?.addEventListener('submit', (event) => {
     event.preventDefault();
 
@@ -439,6 +478,7 @@
     const fullName = String(formData.get('fullName') || '').trim();
     const phone = String(formData.get('phone') || '').trim();
     const date = String(formData.get('eventDate') || '').trim();
+    const time = String(formData.get('eventTime') || '').trim();
     const eventType = String(formData.get('eventType') || '').trim();
     const location = String(formData.get('eventLocation') || '').trim();
     const message = String(formData.get('message') || '').trim();
@@ -447,6 +487,7 @@
       fullName: document.getElementById('fullName'),
       phone: document.getElementById('phone'),
       eventDate: document.getElementById('eventDate'),
+      eventTime: document.getElementById('eventTime'),
       eventType: document.getElementById('eventType')
     };
 
@@ -470,10 +511,20 @@
     }
 
     if (!date) {
-      setFieldError(fields.eventDate, 'Please select your event date.');
+      setFieldError(fields.eventDate, 'Please select the program start date.');
       valid = false;
     } else {
       setFieldError(fields.eventDate, '');
+    }
+
+    if (!time) {
+      setFieldError(fields.eventTime, 'Please select the program start time.');
+      valid = false;
+    } else if (date && isPastProgramTime(date, time)) {
+      setFieldError(fields.eventTime, 'Please choose a future program start time.');
+      valid = false;
+    } else {
+      setFieldError(fields.eventTime, '');
     }
 
     if (!eventType) {
@@ -494,7 +545,8 @@
       `Name: ${fullName}`,
       `Phone: ${phone}`,
       `Event: ${eventType}`,
-      `Date: ${date}`,
+      `Program start date: ${formatProgramDate(date)}`,
+      `Program start time: ${formatProgramTime(time)}`,
       `Location: ${location || 'Not provided'}`,
       `Details: ${message || 'Not provided'}`
     ];

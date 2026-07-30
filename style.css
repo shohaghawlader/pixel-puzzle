@@ -2765,3 +2765,20 @@ body.lightbox-open {
     grid-auto-rows: 17rem;
   }
 }
+
+/* Program schedule fields */
+.program-schedule-grid {
+  align-items: start;
+}
+
+.form-row input[type="date"],
+.form-row input[type="time"] {
+  min-height: 2.65rem;
+  color-scheme: light;
+}
+
+.form-row input[type="date"]::-webkit-calendar-picker-indicator,
+.form-row input[type="time"]::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  opacity: 0.65;
+}

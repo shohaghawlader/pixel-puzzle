@@ -263,14 +263,15 @@
 <div class="booking-copy reveal">
 <p class="eyebrow eyebrow-light"><span></span> Check availability</p>
 <h2>Tell us about<br/>your <em>event.</em></h2>
-<p>Send the date, location, and preferred package. The form prepares a WhatsApp message for the PixelPuzzle team.</p>
+<p>Send the program start date, time, location, and preferred package. The form prepares a WhatsApp message for the PixelPuzzle team.</p>
 <a class="booking-phone" href="tel:+8801792005452"><span>Call directly</span><strong>01792-005452</strong></a>
 </div>
 <form class="booking-form reveal delay-1" id="bookingForm" novalidate="">
 <div class="form-row"><label for="fullName">Your name</label><input autocomplete="name" id="fullName" name="fullName" placeholder="Enter your name" required="" type="text"/><small class="field-error" data-error-for="fullName"></small></div>
-<div class="form-grid-two">
 <div class="form-row"><label for="phone">Phone number</label><input autocomplete="tel" id="phone" inputmode="tel" name="phone" placeholder="01XXXXXXXXX" required="" type="tel"/><small class="field-error" data-error-for="phone"></small></div>
-<div class="form-row"><label for="eventDate">Event date</label><input id="eventDate" name="eventDate" required="" type="date"/><small class="field-error" data-error-for="eventDate"></small></div>
+<div class="form-grid-two program-schedule-grid">
+<div class="form-row"><label for="eventDate">Program start date</label><input id="eventDate" name="eventDate" required="" type="date"/><small class="field-error" data-error-for="eventDate"></small></div>
+<div class="form-row"><label for="eventTime">Program start time</label><input id="eventTime" name="eventTime" required="" step="900" type="time"/><small class="field-error" data-error-for="eventTime"></small></div>
 </div>
 <div class="form-row"><label for="eventType">Event type</label><select id="eventType" name="eventType" required=""><option value="">Choose an event</option><option>Birthday</option><option>Maternity &amp; Baby Shower</option><option>Outdoor Theme Shoot</option><option selected="">Wedding</option></select><small class="field-error" data-error-for="eventType"></small></div>
 <div class="form-row"><label for="eventLocation">Location</label><input autocomplete="street-address" id="eventLocation" name="eventLocation" placeholder="Event venue or area" type="text"/></div>
