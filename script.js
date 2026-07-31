@@ -133,19 +133,18 @@
         "assets/images/photo_0160_1365x2048.jpg"
     ],
     "maternity": [
-        "assets/images/photo_0047_1365x2048.jpg",
-        "assets/images/photo_0048_1365x2048.jpg",
-        "assets/images/photo_0049_1365x2048.jpg",
-        "assets/images/photo_0050_1365x2048.jpg",
-        "assets/images/photo_0051_1365x2048.jpg",
-        "assets/images/photo_0052_1365x2048.jpg",
-        "assets/images/photo_0053_1365x2048.jpg",
-        "assets/images/photo_0054_1365x2048.jpg",
-        "assets/images/photo_0055_1365x2048.jpg",
-        "assets/images/photo_0056_1365x2048.jpg",
-        "assets/images/photo_0074_1448x2048.jpg",
-        "assets/images/photo_0075_1448x2048.jpg",
-        "assets/images/photo_0076_1448x2048.jpg"
+        "assets/images/11.jpg",
+        "assets/images/12.jpg",
+        "assets/images/13.jpg",
+        "assets/images/14.jpg",
+        "assets/images/15.jpg",
+        "assets/images/16.jpg",
+        "assets/images/17.jpg",
+        "assets/images/18.jpg",
+        "assets/images/19.jpg",
+        "assets/images/20.jpg",
+        "assets/images/21.jpg",
+        "assets/images/22.jpg"
     ],
     "outdoor": [
         "assets/images/1.jpeg",
@@ -523,7 +522,7 @@
     }
 
     if (!date) {
-      setFieldError(fields.eventDate, 'Please select the program start date.');
+      setFieldError(fields.eventDate, 'Please select the program date.');
       valid = false;
     } else {
       setFieldError(fields.eventDate, '');
@@ -557,7 +556,7 @@
       `Name: ${fullName}`,
       `Phone: ${phone}`,
       `Event: ${eventType}`,
-      `Program start date: ${formatProgramDate(date)}`,
+      `Program date: ${formatProgramDate(date)}`,
       `Program start time: ${formatProgramTime(time)}`,
       `Location: ${location || 'Not provided'}`,
       `Details: ${message || 'Not provided'}`
