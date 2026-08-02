@@ -274,8 +274,17 @@
         "assets/images/photo_0200_2048x1365.jpg"
     ],
     "wedding": [
+        "assets/1.jpg",
+        "assets/2.jpg",
+        "assets/3.jpg",
+        "assets/4.jpg",
+        "assets/5.jpg",
+        "assets/6.jpg",
+        "assets/7.jpg",
+        "assets/8.jpg",
+        "assets/9.jpg",
+        "assets/10.jpg",
         "assets/images/portfolio-wedding-01.webp",
-        "assets/images/portfolio-wedding-02.webp",
         "assets/images/portfolio-wedding-03.webp",
         "assets/images/portfolio-wedding-04.webp",
         "assets/images/wedding-01.webp",
